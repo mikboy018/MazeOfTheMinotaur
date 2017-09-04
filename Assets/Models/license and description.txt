@@ -1,0 +1,25 @@
+Created by Andreas Astertun 2008 www.it-bubblan.se
+
+--------------------------------------------------
+
+Low poly Red Baron Goggles 3D Model
+
+218 Vertices, 412 faces
+256x256 Jpeg Texture
+Seamed and mapped
+
+--------------------------------------------------
+
+License terms for my free products:
+-----------------------------
+* Visible credits in final product
+* This file incuded in any redistributions
+* No other restrictions
+* Any good improvements shared with me
+
+License terms if you paid for the product:
+------------------------------------------
+* Use is restricted to one company or person, product may be used in several productions.
+* No other restrictions
+
+If you need any custom models made please email me at the above website.
