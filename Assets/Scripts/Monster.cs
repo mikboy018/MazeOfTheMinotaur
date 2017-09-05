@@ -10,6 +10,8 @@ public class Monster : MonoBehaviour {
     public float maxDist;
     public AudioSource monsterNoise;
     public float time;
+    public GameObject player;
+    
 
     void Awake()
     {
@@ -19,17 +21,12 @@ public class Monster : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        //this.gameObject.GetComponent<BaddieWalkScript>().Walk();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        transform.LookAt(target);
-        if(Vector3.Distance(transform.position, target.position) >= minDist)
-        {
-            transform.position += transform.forward * speed * Time.deltaTime;
-            
-        }
+        this.gameObject.GetComponent<BaddieWalkScript>().Walk();
 	}
 
 }

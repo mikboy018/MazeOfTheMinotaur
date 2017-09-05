@@ -10,7 +10,7 @@ public class ZapperScript : MonoBehaviour {
     public GameObject[] zapperArray;
     public GameObject[] zapBlastArray;
     public Transform weapon;
-    public Transform monster;
+    //public Transform monster;
     public GameObject poof;
     public AudioSource gunFire;
     public AudioSource monsterBoom;
@@ -32,7 +32,7 @@ public class ZapperScript : MonoBehaviour {
         {
             
             zap();
-            Debug.Log("Bang!");
+            //Debug.Log("Bang!");
                       
         }
     }
@@ -41,24 +41,23 @@ public class ZapperScript : MonoBehaviour {
     void zap()
     {
         //upon clicking a monster, enable the gun to fire (tag - ZapBlast)
-        //when monster gone, destroy Zapper and ZapBlast
         RaycastHit hit;
         if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit))
         {
             Debug.Log(hit.transform.name);
-            if(hit.transform.name == "RobotMonster")
+            if(hit.transform.tag == "Monster")
             {
-                Destroy(GameObject.Find("RobotMonster"));
-                Object.Instantiate(poof, monster.position, Quaternion.Euler(-90f, 0f, 0f));
-                Debug.Log("Got him!");
+                Destroy(hit.transform.gameObject);
+                Object.Instantiate(poof, hit.transform.position, Quaternion.Euler(-90f, 0f, 0f));
+                //Debug.Log("Got him!");
                 StartCoroutine(flash());
-                StartCoroutine(disableWeapon());
+                //StartCoroutine(disableWeapon());
                 monsterBoom.Play();
             }
             if (hit.transform.name != "Floor")
             {
                 GunBlast();
-                Debug.Log("Missed!");
+                //Debug.Log("Missed!");
             }
         }
     }
@@ -87,13 +86,13 @@ public class ZapperScript : MonoBehaviour {
         {
             go.SetActive(false);
         }
-        Debug.Log("no more blast");
+        //Debug.Log("no more blast");
     }
 
     public IEnumerator flash()
     {
         yield return new WaitForSeconds(waitTime);
-        Debug.Log("waiting");
+        //Debug.Log("waiting");
         stopBlast();
     }
     public IEnumerator disableWeapon()
