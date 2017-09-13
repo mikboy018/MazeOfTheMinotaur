@@ -45,7 +45,7 @@ public class ZapperScript : MonoBehaviour {
         if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit))
         {
             Debug.Log(hit.transform.name);
-            if(hit.transform.tag == "Monster")
+            if(hit.transform.CompareTag("Monster"))
             {
                 Destroy(hit.transform.gameObject);
                 Object.Instantiate(poof, hit.transform.position, Quaternion.Euler(-90f, 0f, 0f));
@@ -54,7 +54,15 @@ public class ZapperScript : MonoBehaviour {
                 //StartCoroutine(disableWeapon());
                 monsterBoom.Play();
             }
-            if (hit.transform.name != "Floor")
+            if (hit.transform.CompareTag("Collectible"))
+            {
+                if(hit.transform.name == "Key")
+                {
+                    hit.collider.gameObject.GetComponentInParent<Key>().OnKeyClicked();
+                }
+                
+            }
+            if (!hit.transform.CompareTag("Floor") & !hit.transform.CompareTag("Collectible"))
             {
                 GunBlast();
                 //Debug.Log("Missed!");
