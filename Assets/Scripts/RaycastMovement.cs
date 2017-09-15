@@ -5,13 +5,15 @@ public class RaycastMovement : MonoBehaviour {
 	public GameObject raycastHolder;
 	public GameObject player;
 	public GameObject raycastIndicator;
-
+    
 	public float height = 2;
 	public bool teleport = true;
 
 	public float maxMoveDistance = 10;
 	
 	private bool moving = false;
+
+    public bool isShrunk = false;
 
 	RaycastHit hit;
 	float theDistance;
@@ -82,5 +84,10 @@ public class RaycastMovement : MonoBehaviour {
 	}
 	public void teleportMove(Vector3 location) {
 		player.transform.position = new Vector3 (location.x, location.y + height, location.z);
+        if(isShrunk == true)
+        {
+            player.transform.position = new Vector3(location.x, -2f, location.z);
+        }
+            
 	}
 }

@@ -44,7 +44,7 @@ public class ZapperScript : MonoBehaviour {
         RaycastHit hit;
         if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit))
         {
-            Debug.Log(hit.transform.name);
+            //Debug.Log(hit.transform.name);
             if(hit.transform.CompareTag("Monster"))
             {
                 Destroy(hit.transform.gameObject);
@@ -62,7 +62,11 @@ public class ZapperScript : MonoBehaviour {
                 }
                 
             }
-            if (!hit.transform.CompareTag("Floor") & !hit.transform.CompareTag("Collectible"))
+            if (hit.transform.CompareTag("movementCapable"))
+            {
+                stopBlast();
+            }
+            if (!hit.transform.CompareTag("movementCapable") & !hit.transform.CompareTag("Collectible"))
             {
                 GunBlast();
                 //Debug.Log("Missed!");
@@ -103,14 +107,5 @@ public class ZapperScript : MonoBehaviour {
         //Debug.Log("waiting");
         stopBlast();
     }
-    public IEnumerator disableWeapon()
-    {
-        zapperArray = GameObject.FindGameObjectsWithTag("Zapper");
-        foreach (GameObject go in zapperArray)
-        {
-            yield return new WaitForSeconds(waitTime*5f);
-            go.transform.position += new Vector3(weapon.position.x, -.125f, weapon.position.z);
-            go.SetActive(false);
-        }
-    }
+    
 }

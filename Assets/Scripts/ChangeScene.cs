@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour {
     public string sceneName;
+    public bool isShrunk;
 	public void GoToScene()
     {
         SceneManager.LoadScene(sceneName);
