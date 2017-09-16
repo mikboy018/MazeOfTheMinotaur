@@ -7,7 +7,8 @@ public class ShrinkRay : MonoBehaviour {
     public GameObject player;
     public Collider playerCollider;
     public GameObject movement;
-    public GameObject gun;
+    public GameObject tinyGun;
+    public GameObject normalGun;
     
 
     // Wall
@@ -36,7 +37,8 @@ public class ShrinkRay : MonoBehaviour {
                 // While shrunk, the box collider is disabled, and the player can walk under
                 wall.GetComponent<Collider>().enabled = false;
                 playerCollider.gameObject.transform.localPosition = ShortColliderHeight;
-                gun.transform.localScale = ShrunkGun;
+                tinyGun.gameObject.SetActive(true);
+                normalGun.gameObject.SetActive(false);
                 movement.GetComponent<RaycastMovement>().isShrunk = true;
             }
         }
@@ -48,6 +50,8 @@ public class ShrinkRay : MonoBehaviour {
                 // restore player height and collider
                 player.transform.position += NormalHeight;
                 wall.GetComponent<Collider>().enabled = true;
+                tinyGun.gameObject.SetActive(false);
+                normalGun.gameObject.SetActive(true);
                 movement.GetComponent<RaycastMovement>().isShrunk = false;
             }
         }

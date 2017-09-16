@@ -86,7 +86,7 @@ public class RaycastMovement : MonoBehaviour {
 		player.transform.position = new Vector3 (location.x, location.y + height, location.z);
         if(isShrunk == true)
         {
-            player.transform.position = new Vector3(location.x, -2f, location.z);
+            player.transform.position = new Vector3(location.x, -1.7f, location.z);
         }
             
 	}
