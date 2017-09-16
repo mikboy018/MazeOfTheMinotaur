@@ -14,6 +14,9 @@ public class ZapperScript : MonoBehaviour {
     public GameObject poof;
     public AudioSource gunFire;
     public AudioSource monsterBoom;
+    public int zapperDamage = 25;
+    public GameObject score;
+    
    
 
     // Use this for initialization
@@ -53,6 +56,27 @@ public class ZapperScript : MonoBehaviour {
                 StartCoroutine(flash());
                 //StartCoroutine(disableWeapon());
                 monsterBoom.Play();
+                score.GetComponent<Score>().totalScore += 200;
+                Debug.Log("Score: " + score.GetComponent<Score>().totalScore);
+            }
+            if (hit.transform.CompareTag("Boss"))
+            {
+                hit.transform.gameObject.GetComponent<BossStatus>().bossHealth = hit.transform.gameObject.GetComponent<BossStatus>().bossHealth - zapperDamage;
+                Debug.Log("Boss health is now: " + hit.transform.gameObject.GetComponent<BossStatus>().bossHealth);
+                StartCoroutine(flash());
+                if (hit.transform.gameObject.GetComponent<BossStatus>().bossHealth == 0)
+                {
+                    Destroy(hit.transform.gameObject);
+                    Object.Instantiate(poof, hit.transform.position, Quaternion.Euler(-90f, 0f, 0f));
+                    //Debug.Log("Got him!");
+                    StartCoroutine(flash());
+                    //StartCoroutine(disableWeapon());
+                    monsterBoom.Play();
+                    score.GetComponent<Score>().totalScore += 1000;
+                    //sets the condition to unlock green exit door and enable the blue and yellow buttons
+                    score.GetComponent<Score>().minotaurSlain = true;
+                    Debug.Log("Score: " + score.GetComponent<Score>().totalScore);
+                }
             }
             if (hit.transform.CompareTag("Collectible"))
             {
