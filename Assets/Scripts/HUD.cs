@@ -33,8 +33,11 @@ public class HUD : MonoBehaviour {
         {
             keyCollected = score.gameObject.GetComponent<Score>().keyCollected;
             score.gameObject.GetComponent<Score>().totalScore += 200;
+            if(score.gameObject.GetComponent<Score>().secondPass == true)
+            {
+                score.gameObject.GetComponent<Score>().totalScore -= 200;
+            }
             totalScoreStatus.text = "Total Score: " + totalScore.ToString();
-
         }
         /*if(minotaurSlain != score.gameObject.GetComponent<Score>().minotaurSlain)
         {
@@ -44,6 +47,10 @@ public class HUD : MonoBehaviour {
         {
             gemsCollected = score.gameObject.GetComponent<Score>().gemsCollected;
             score.gameObject.GetComponent<Score>().totalScore += 100;
+            if (score.gameObject.GetComponent<Score>().secondPass == true)
+            {
+                score.gameObject.GetComponent<Score>().totalScore -= 100;
+            }
             gemsStatus.text = "Gems Collected: " + gemsCollected.ToString() + " of 8";
         }
         if (totalScore != score.gameObject.GetComponent<Score>().totalScore)

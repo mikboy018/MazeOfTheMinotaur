@@ -6,7 +6,7 @@ public class TreasureRemaining : MonoBehaviour {
 
     public GameObject[] gems;
     
-
+    
 	void Start () {
         for(int i = 0; i < gems.Length; i++)
         {

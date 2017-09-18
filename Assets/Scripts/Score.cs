@@ -8,6 +8,8 @@ public class Score : MonoBehaviour {
 
     public bool minotaurSlain = false;
 
+    public bool secondPass = false;
+
     public int gemsCollected = 0;
 
     public int totalScore = 0;
@@ -16,7 +18,6 @@ public class Score : MonoBehaviour {
     {
         gemsCollected = gemsCollected + 1;
         totalScore = totalScore + 100;
-        
     }
     //update HUD when minotaur slain
 

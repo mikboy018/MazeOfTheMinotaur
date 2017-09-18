@@ -50,13 +50,17 @@ public class ZapperScript : MonoBehaviour {
             //Debug.Log(hit.transform.name);
             if(hit.transform.CompareTag("Monster"))
             {
-                Destroy(hit.transform.gameObject);
+                hit.transform.gameObject.SetActive(false);
                 Object.Instantiate(poof, hit.transform.position, Quaternion.Euler(-90f, 0f, 0f));
                 //Debug.Log("Got him!");
                 StartCoroutine(flash());
                 //StartCoroutine(disableWeapon());
                 monsterBoom.Play();
                 score.GetComponent<Score>().totalScore += 200;
+                if (score.gameObject.GetComponent<Score>().secondPass == true)
+                {
+                    score.gameObject.GetComponent<Score>().totalScore -= 200;
+                }
                 Debug.Log("Score: " + score.GetComponent<Score>().totalScore);
             }
             if (hit.transform.CompareTag("Boss"))
@@ -66,13 +70,18 @@ public class ZapperScript : MonoBehaviour {
                 StartCoroutine(flash());
                 if (hit.transform.gameObject.GetComponent<BossStatus>().bossHealth == 0)
                 {
-                    Destroy(hit.transform.gameObject);
+                    hit.transform.gameObject.SetActive(false);
+                    //Destroy(hit.transform.gameObject);
                     Object.Instantiate(poof, hit.transform.position, Quaternion.Euler(-90f, 0f, 0f));
                     //Debug.Log("Got him!");
                     StartCoroutine(flash());
                     //StartCoroutine(disableWeapon());
                     monsterBoom.Play();
                     score.GetComponent<Score>().totalScore += 1000;
+                    if (score.gameObject.GetComponent<Score>().secondPass == true)
+                    {
+                        score.gameObject.GetComponent<Score>().totalScore -= 1000;
+                    }
                     //sets the condition to unlock green exit door and enable the blue and yellow buttons
                     score.GetComponent<Score>().minotaurSlain = true;
                     //Debug.Log("Score: " + score.GetComponent<Score>().totalScore);

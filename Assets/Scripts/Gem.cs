@@ -5,16 +5,22 @@ using UnityEngine;
 public class Gem : MonoBehaviour {
 
     public GameObject score;
-    public GameObject masterLogic;
+    public GameObject sceneLogic;
     public GameObject empty;
+    //public GameObject forNextLevel;
     public bool canCollect = false;
+    public int gemNumber;
+
+    
 
     public void CollectGem()
     {
         this.gameObject.SetActive(false);
         score.GetComponent<Score>().gemsCollected += 1;
         //Debug.Log("Time to remove gem");
-        masterLogic.GetComponent<TreasureRemaining>().RemoveGem(this.gameObject, empty);
+        sceneLogic.GetComponent<TreasureRemaining>().RemoveGem(this.gameObject, empty);
+        //forNextLevel.GetComponent<GemFilter>().UpdateGems(gemNumber);
+
     }
 
     private void OnTriggerStay(Collider other)
