@@ -29,7 +29,8 @@ public class HUD : MonoBehaviour {
 	void Update () {
 		if(keyCollected != score.gameObject.GetComponent<Score>().keyCollected)
         {
-            totalScore = +200;
+            keyCollected = score.gameObject.GetComponent<Score>().keyCollected;
+            score.gameObject.GetComponent<Score>().totalScore += 200;
             totalScoreStatus.text = "Total Score: " + totalScore.ToString();
 
         }
@@ -40,7 +41,8 @@ public class HUD : MonoBehaviour {
         if(gemsCollected != score.gameObject.GetComponent<Score>().gemsCollected)
         {
             gemsCollected = score.gameObject.GetComponent<Score>().gemsCollected;
-            gemsStatus.text = "Gems Collected: " + gemsCollected.ToString();
+            score.gameObject.GetComponent<Score>().totalScore += 100;
+            gemsStatus.text = "Gems Collected: " + gemsCollected.ToString() + " of 8";
         }
         if (totalScore != score.gameObject.GetComponent<Score>().totalScore)
         {

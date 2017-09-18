@@ -84,6 +84,10 @@ public class ZapperScript : MonoBehaviour {
                 {
                     hit.collider.gameObject.GetComponentInParent<Key>().OnKeyClicked();
                 }
+                if(hit.transform.name != "Key")
+                {
+                    hit.collider.gameObject.GetComponent<Gem>().CollectGem();
+                }
                 
             }
             if (hit.transform.CompareTag("movementCapable"))
