@@ -21,6 +21,12 @@ public class ShrinkRay : MonoBehaviour {
 
     // Tall Height
     private Vector3 NormalHeight = new Vector3(0, 1f, 0);
+    private Vector3 NormalColliderHeight;
+
+    private void Start()
+    {
+        NormalColliderHeight = playerCollider.transform.localPosition;
+    }
 
 
 
@@ -32,7 +38,7 @@ public class ShrinkRay : MonoBehaviour {
         {
             if (this.gameObject.GetComponent<ShrinkCapable>().canShrink == true && other.gameObject.GetComponent<Collider>().Equals(playerCollider))
             {
-                Debug.Log("Shrinking player!");
+                //Debug.Log("Shrinking player!");
                 player.transform.position += ShortHeight;
                 // While shrunk, the box collider is disabled, and the player can walk under
                 wall.GetComponent<Collider>().enabled = false;
@@ -49,6 +55,7 @@ public class ShrinkRay : MonoBehaviour {
             {
                 // restore player height and collider
                 player.transform.position += NormalHeight;
+                playerCollider.transform.localPosition = NormalColliderHeight;
                 wall.GetComponent<Collider>().enabled = true;
                 tinyGun.gameObject.SetActive(false);
                 normalGun.gameObject.SetActive(true);
