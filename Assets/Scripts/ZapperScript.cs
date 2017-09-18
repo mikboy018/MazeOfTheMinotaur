@@ -62,7 +62,7 @@ public class ZapperScript : MonoBehaviour {
             if (hit.transform.CompareTag("Boss"))
             {
                 hit.transform.gameObject.GetComponent<BossStatus>().bossHealth = hit.transform.gameObject.GetComponent<BossStatus>().bossHealth - zapperDamage;
-                Debug.Log("Boss health is now: " + hit.transform.gameObject.GetComponent<BossStatus>().bossHealth);
+                //Debug.Log("Boss health is now: " + hit.transform.gameObject.GetComponent<BossStatus>().bossHealth);
                 StartCoroutine(flash());
                 if (hit.transform.gameObject.GetComponent<BossStatus>().bossHealth == 0)
                 {
@@ -75,7 +75,7 @@ public class ZapperScript : MonoBehaviour {
                     score.GetComponent<Score>().totalScore += 1000;
                     //sets the condition to unlock green exit door and enable the blue and yellow buttons
                     score.GetComponent<Score>().minotaurSlain = true;
-                    Debug.Log("Score: " + score.GetComponent<Score>().totalScore);
+                    //Debug.Log("Score: " + score.GetComponent<Score>().totalScore);
                 }
             }
             if (hit.transform.CompareTag("Collectible"))
@@ -86,7 +86,10 @@ public class ZapperScript : MonoBehaviour {
                 }
                 if(hit.transform.name != "Key")
                 {
-                    hit.collider.gameObject.GetComponent<Gem>().CollectGem();
+                    if (hit.transform.gameObject.GetComponent<Gem>().canCollect == true)
+                    {
+                        hit.collider.gameObject.GetComponent<Gem>().CollectGem();
+                    }
                 }
                 
             }

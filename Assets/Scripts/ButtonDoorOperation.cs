@@ -11,7 +11,7 @@ public class ButtonDoorOperation : MonoBehaviour {
 
     private void OnTriggerStay(Collider other)
     {
-        Debug.Log(other.gameObject.name + " stepped on: " + this.gameObject.name);
+        //Debug.Log(other.gameObject.name + " stepped on: " + this.gameObject.name);
         if (other.gameObject.CompareTag("PlayerCollisionBox") && logic.GetComponent<Score>().minotaurSlain == true)
         {
             //disable other door buttons

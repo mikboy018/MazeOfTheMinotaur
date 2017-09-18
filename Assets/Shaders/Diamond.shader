@@ -1,4 +1,4 @@
-﻿Shader "Custom/PositionMarker" {
+﻿Shader "Custom/Diamond" {
 	Properties {
 		_Color ("Color", Color) = (1,1,1,1)
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
@@ -29,7 +29,7 @@
 		void surf (Input IN, inout SurfaceOutputStandard o) {
 			// Albedo comes from a texture tinted by color
 			fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
-			o.Albedo = float3(0, 1+abs(sin(_Time.z)),0);
+			o.Albedo = float3(1 + abs(sin(_Time.z)), 0, 0);
 			// Metallic and smoothness come from slider variables
 			o.Metallic = _Metallic;
 			o.Smoothness = _Glossiness;

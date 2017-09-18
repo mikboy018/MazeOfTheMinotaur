@@ -6,13 +6,15 @@ using UnityEngine.UI;
 public class HUD : MonoBehaviour {
 
     public GameObject score;
+    public GameObject boss;
     public Text gemsStatus;
     public Text totalScoreStatus;
+    public Text bossStatus;
 
 
     //local variables
     private bool keyCollected;
-    private bool minotaurSlain;
+    private bool minotaurSlain = false;
     private int gemsCollected;
     private int totalScore;
 
@@ -48,6 +50,21 @@ public class HUD : MonoBehaviour {
         {
             totalScore = score.gameObject.GetComponent<Score>().totalScore;
             totalScoreStatus.text = "Total Score: " + totalScore.ToString();
+        }
+        if (minotaurSlain != score.gameObject.GetComponent<Score>().minotaurSlain)
+        {
+            minotaurSlain = score.gameObject.GetComponent<Score>().minotaurSlain;
+        }
+        if (minotaurSlain == score.gameObject.GetComponent<Score>().minotaurSlain)
+        {
+            if (minotaurSlain == false)
+            {
+                bossStatus.text = "Boss Status: ALIVE, and hunting. Health: " + boss.gameObject.GetComponent<BossStatus>().bossHealth;
+            }
+            if (minotaurSlain == true)
+            {
+                bossStatus.text = "Boss Status: ELIMINATED";
+            }
         }
 
 
