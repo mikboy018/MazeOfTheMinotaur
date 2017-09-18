@@ -11,15 +11,15 @@ public class ButtonDoorOperation : MonoBehaviour {
 
     private void OnTriggerStay(Collider other)
     {
-        Debug.Log("You stepped on: " + this.gameObject.name + " - triggered by: " + other.gameObject.name);
+        Debug.Log(other.gameObject.name + " stepped on: " + this.gameObject.name);
         if (other.gameObject.CompareTag("PlayerCollisionBox") && logic.GetComponent<Score>().minotaurSlain == true)
         {
-            
+            //disable other door buttons
+            otherButton.gameObject.SetActive(false);
             //open door
             door1.SetTrigger("Open Door");
             door2.SetTrigger("Open Door");
-            //disable other doors
-            otherButton.gameObject.SetActive(false);
+            
         }
 
     }
