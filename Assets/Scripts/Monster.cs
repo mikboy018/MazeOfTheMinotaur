@@ -16,7 +16,7 @@ public class Monster : MonoBehaviour {
     void Awake()
     {
         //monsterBody = GetComponent<GameObject>();
-        monsterNoise.Play();
+        //monsterNoise.Play();
     }
 
 	// Use this for initialization
