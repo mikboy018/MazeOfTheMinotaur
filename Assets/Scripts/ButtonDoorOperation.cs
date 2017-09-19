@@ -18,7 +18,14 @@ public class ButtonDoorOperation : MonoBehaviour {
             otherButton.gameObject.SetActive(false);
             //open door
             door1.SetTrigger("Open Door");
-            door2.SetTrigger("Open Door");
+            if (this.name != "YellowDoorTrigger")
+            {
+                door2.SetTrigger("Open Door");
+            }
+            if (this.name == "YelloDoorTrigger")
+            {
+                door1.gameObject.SetActive(false);
+            }
             
         }
 
