@@ -15,6 +15,7 @@ public class HUD : MonoBehaviour {
     //local variables
     private bool keyCollected;
     private bool minotaurSlain = false;
+    public bool secondPass;
     private int gemsCollected;
     private int totalScore;
 
@@ -70,7 +71,15 @@ public class HUD : MonoBehaviour {
             }
             if (minotaurSlain == true)
             {
-                bossStatus.text = "Boss Status: ELIMINATED";
+                secondPass = score.gameObject.GetComponent<Score>().secondPass;
+                if (!secondPass)
+                {
+                    bossStatus.text = "Boss Status: ELIMINATED";
+                }
+                if (secondPass)
+                {
+                    bossStatus.text = "Boss Status: ELIMINATED???";
+                }
             }
         }
 

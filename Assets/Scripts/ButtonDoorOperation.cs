@@ -25,6 +25,7 @@ public class ButtonDoorOperation : MonoBehaviour {
             if (this.name == "YelloDoorTrigger")
             {
                 door1.gameObject.SetActive(false);
+                door2.gameObject.SetActive(false);
             }
             
         }

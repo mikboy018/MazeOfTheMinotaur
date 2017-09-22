@@ -11,7 +11,15 @@ public class Gem : MonoBehaviour {
     public bool canCollect = false;
     public int gemNumber;
 
-    
+    public float speed = 20f;
+
+
+
+
+    public void Update()
+    {
+        transform.Rotate(Vector3.up, speed * Time.deltaTime);
+    }
 
     public void CollectGem()
     {
