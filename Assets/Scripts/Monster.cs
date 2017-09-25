@@ -1,16 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Monster : MonoBehaviour {
 
     public float speed;
     public Transform target;
-    public float minDist;
-    public float maxDist;
+    public float impact = 5;
     public AudioSource monsterNoise;
-    public float time;
     public GameObject player;
+    public GameObject score;
     
 
     void Awake()
@@ -22,11 +22,12 @@ public class Monster : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         //this.gameObject.GetComponent<BaddieWalkScript>().Walk();
-	}
+  	}
 	
 	// Update is called once per frame
 	void Update () {
         this.gameObject.GetComponent<BaddieWalkScript>().Walk();
 	}
+
 
 }

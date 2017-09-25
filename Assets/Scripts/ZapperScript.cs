@@ -61,7 +61,7 @@ public class ZapperScript : MonoBehaviour {
                 {
                     score.gameObject.GetComponent<Score>().totalScore -= 200;
                 }
-                Debug.Log("Score: " + score.GetComponent<Score>().totalScore);
+                //Debug.Log("Score: " + score.GetComponent<Score>().totalScore);
             }
             if (hit.transform.CompareTag("Boss"))
             {

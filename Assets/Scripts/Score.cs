@@ -14,6 +14,7 @@ public class Score : MonoBehaviour {
 
     public int totalScore = 0;
 
+
     public void gemCollected()
     {
         gemsCollected = gemsCollected + 1;

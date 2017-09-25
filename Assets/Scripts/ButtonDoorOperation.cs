@@ -17,6 +17,7 @@ public class ButtonDoorOperation : MonoBehaviour {
             //disable other door buttons
             otherButton.gameObject.SetActive(false);
             //open door
+            /*
             door1.SetTrigger("Open Door");
             if (this.name != "YellowDoorTrigger")
             {
@@ -26,7 +27,10 @@ public class ButtonDoorOperation : MonoBehaviour {
             {
                 door1.gameObject.SetActive(false);
                 door2.gameObject.SetActive(false);
-            }
+            }*/
+
+            door1.gameObject.SetActive(false);
+            door2.gameObject.SetActive(false);
             
         }
 

@@ -35,6 +35,6 @@ public class StartOver : MonoBehaviour {
 
     public void exitGame()
     {
-
+        Application.Quit();
     }
 }

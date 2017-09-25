@@ -72,7 +72,7 @@ public class Artifact : MonoBehaviour
         {
             GameObject.Find("MasterLogic").GetComponent<Counter>().eduDone++;
         }
-        GameObject.Find("SceneLogic").GetComponent<UnlockScript>().ArtifactCollected();
+        //GameObject.Find("SceneLogic").GetComponent<UnlockScript>().ArtifactCollected();
         Object.DestroyImmediate(this.gameObject, true);
         
         RemoveKey();

@@ -50,7 +50,7 @@ public class HUD : MonoBehaviour {
             score.gameObject.GetComponent<Score>().totalScore += 100;
             if (score.gameObject.GetComponent<Score>().secondPass == true)
             {
-                score.gameObject.GetComponent<Score>().totalScore -= 100;
+               // score.gameObject.GetComponent<Score>().totalScore -= 100;
             }
             gemsStatus.text = "Gems Collected: " + gemsCollected.ToString() + " of 8";
         }
